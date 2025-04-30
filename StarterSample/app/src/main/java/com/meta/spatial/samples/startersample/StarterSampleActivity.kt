@@ -7,8 +7,14 @@
 
 package com.meta.spatial.samples.startersample
 
+import android.content.pm.PackageManager
+import android.graphics.ImageFormat
+import android.media.Image
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.meta.spatial.castinputforward.CastInputForwardFeature
 import com.meta.spatial.core.Entity
 import com.meta.spatial.core.Pose
@@ -38,9 +44,16 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 // default activity
-class StarterSampleActivity : AppSystemActivity() {
+class StarterSampleActivity : AppSystemActivity(), ActivityCompat.OnRequestPermissionsResultCallback,
+    ImageAvailableListener
+{
   private var gltfxEntity: Entity? = null
   private val activityScope = CoroutineScope(Dispatchers.Main)
+
+    private val cameraPermissions = arrayOf("horizonos.permission.HEADSET_CAMERA")
+    private val cameraPermissionsCode = 1000
+    private lateinit var permissionsResultCallback: (granted: Boolean) -> Unit
+    private lateinit var cameraController: CameraController
 
   override fun registerFeatures(): List<SpatialFeature> {
     val features = mutableListOf<SpatialFeature>(VRFeature(this))
@@ -57,6 +70,8 @@ class StarterSampleActivity : AppSystemActivity() {
     super.onCreate(savedInstanceState)
     NetworkedAssetLoader.init(
         File(applicationContext.getCacheDir().canonicalPath), OkHttpAssetFetcher())
+
+      cameraController = CameraController(this)
 
     // wait for GLXF to load before accessing nodes inside it
     loadGLXF().invokeOnCompletion {
@@ -105,6 +120,33 @@ class StarterSampleActivity : AppSystemActivity() {
             layerConfig = LayerConfig()
             enableTransparent = true
           }
+            panel {
+                val okButton = rootView?.findViewById<Button>(R.id.ok_button)
+                okButton?.setOnClickListener {
+                    // stop the camera if it's running
+
+                    if(cameraController.isRunning) {
+                        stopCamera()
+                        return@setOnClickListener
+                    }
+
+                    // first request permissions if we haven't already
+
+                    if(!hasPermissions()) {
+                        requestPermissions { granted ->
+                            if(granted) {
+                                startCamera()
+                            }
+                        }
+
+                        return@setOnClickListener
+                    }
+
+                    // otherwise, start the camera
+
+                    startCamera()
+                }
+            }
         })
   }
 
@@ -117,4 +159,65 @@ class StarterSampleActivity : AppSystemActivity() {
           keyName = "example_key_name")
     }
   }
+
+    // lifecycle
+
+    override fun onPause() {
+        stopCamera()
+        super.onPause()
+    }
+
+    override fun onDestroy() {
+        cameraController.dispose()
+        super.onDestroy()
+    }
+
+    // camera control
+
+    private fun startCamera() {
+        if(!cameraController.isInitialized) {
+            cameraController.initialize()
+        }
+
+        // the crash bug occurs if using the JPEG image format, but not when using YUV_420_888
+        cameraController.start(ImageFormat.JPEG, listOf(), this)
+    }
+
+    private fun stopCamera() {
+        if(cameraController.isRunning) {
+            cameraController.stop()
+        }
+    }
+
+    override fun onNewImage(image: Image, width: Int, height: Int) {
+        // TODO process image, object detection
+    }
+
+    // permissions requesting
+
+    private fun hasPermissions() = cameraPermissions.all {
+        ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermissions(callback: (granted: Boolean) -> Unit) {
+        permissionsResultCallback = callback
+
+        ActivityCompat.requestPermissions(this, cameraPermissions, cameraPermissionsCode)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int, permissions: Array<out String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            cameraPermissionsCode -> {
+                if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    permissionsResultCallback(true)
+                } else {
+                    permissionsResultCallback(false)
+                }
+            }
+        }
+    }
 }

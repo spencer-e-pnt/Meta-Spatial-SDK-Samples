@@ -58,6 +58,11 @@
   <!-- Volume Control -->
   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
+  <uses-feature
+    android:name="horizonos.feature.HEADSET_CAMERA"
+    android:required="false" />
+  <uses-permission android:name="horizonos.permission.HEADSET_CAMERA" />
+
   <application android:allowBackup="false" android:label="Starter Sample">
     <meta-data
       android:name="com.oculus.supportedDevices"
