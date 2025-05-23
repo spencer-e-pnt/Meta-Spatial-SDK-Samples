@@ -62,7 +62,6 @@ android {
 dependencies {
   implementation(libs.androidx.core.ktx)
   implementation(libs.androidx.appcompat)
-  implementation(libs.material)
   implementation(libs.androidx.activity.ktx)
   implementation(libs.androidx.constraintlayout)
   implementation(libs.androidx.navigation.runtime.ktx)
@@ -76,6 +75,8 @@ dependencies {
   implementation(libs.meta.spatial.sdk.base)
   implementation(libs.meta.spatial.sdk.toolkit)
   implementation(libs.meta.spatial.sdk.vr)
+
+  implementation(files("libs/meta-spatial-uiset-1.0.1.aar"))
 
   // For parsing json
   implementation(libs.google.gson)
