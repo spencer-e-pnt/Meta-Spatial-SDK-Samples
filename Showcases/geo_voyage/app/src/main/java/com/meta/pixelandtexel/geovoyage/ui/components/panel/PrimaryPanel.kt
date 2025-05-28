@@ -2,14 +2,16 @@
 
 package com.meta.pixelandtexel.geovoyage.ui.components.panel
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
+import com.meta.spatial.uiset.theme.LocalColorScheme
+import com.meta.spatial.uiset.theme.LocalShapes
 
 /**
  * Primary GeoVoyage panel to display content.
@@ -20,9 +22,13 @@ import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 fun PrimaryPanel(
     content: @Composable () -> Unit,
 ) {
-  Surface(
-      shape = RoundedCornerShape(26.dp),
-      color = MaterialTheme.colorScheme.surfaceContainer,
+  Box(
+      modifier = Modifier
+          .clip(LocalShapes.current.large)
+          .background(
+              brush = LocalColorScheme.current.panel,
+              shape = LocalShapes.current.large
+          )
   ) {
     Column { content.invoke() }
   }

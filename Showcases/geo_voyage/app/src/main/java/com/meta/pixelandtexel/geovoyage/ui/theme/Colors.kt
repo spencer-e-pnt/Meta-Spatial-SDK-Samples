@@ -7,10 +7,10 @@ import androidx.compose.ui.graphics.Color
 import com.meta.spatial.uiset.theme.lightSpatialColorScheme
 
 object GeoVoyageColors {
-    val navContainer1 = Color(0xFFEBF5E9)
-    val navContainer2 = Color(0xFFd2dbd0)
-    val textContainer1 = Color(0xFFB2F0B8)
-    val textContainer2 = Color(0xFF9dd4a3)
+    val navContainer = Color(0xFFEBF5E9)
+    val navContainerBottom = Color(0xFF8d938c)
+    val textContainer = Color(0xFFB6F1BB)
+    val textContainerBottom = Color(0xFF6d9170)
     val button = Color(0xFF29666E)
     val navIcons = Color(0xFF001F24)
     val navSelected = Color(0xFFBDEAF4)
@@ -19,23 +19,23 @@ object GeoVoyageColors {
     val errorColor = Color(0xFFB91A1A)
 }
 
-val geoVoyageColorScheme = lightSpatialColorScheme().copy(
+val GeoVoyageColorScheme = lightSpatialColorScheme().copy(
     primaryButton = GeoVoyageColors.button,
     secondaryButton = Color(0xFFECEFE8),
     panel =
         Brush.verticalGradient(
             colors =
                 listOf(
-                    GeoVoyageColors.navContainer1,
-                    GeoVoyageColors.navContainer2,
+                    GeoVoyageColors.navContainer,
+                    GeoVoyageColors.navContainerBottom,
                 ),
         ),
     dialog =
         Brush.verticalGradient(
             colors =
                 listOf(
-                    GeoVoyageColors.textContainer1,
-                    GeoVoyageColors.textContainer2,
+                    GeoVoyageColors.textContainer,
+                    GeoVoyageColors.textContainerBottom,
                 ),
         ),
 )

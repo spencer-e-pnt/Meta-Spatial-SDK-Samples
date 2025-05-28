@@ -9,13 +9,13 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.meta.pixelandtexel.geovoyage.R
+import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageColors
 
 /**
  * Standard GeoVoyage circular icon button.
@@ -35,14 +35,14 @@ fun CircleButton(
   FloatingActionButton(
       onClick = onClick,
       shape = CircleShape,
-      containerColor = MaterialTheme.colorScheme.surfaceContainer,
-      contentColor = MaterialTheme.colorScheme.outline,
+      containerColor = GeoVoyageColors.navContainer,
+      contentColor = GeoVoyageColors.settingsCog,
       elevation =
           FloatingActionButtonDefaults.elevation(
-              defaultElevation = 35.dp,
-              pressedElevation = 12.dp,
-              focusedElevation = 12.dp,
-              hoveredElevation = 12.dp,
+              defaultElevation = 8.dp,
+              pressedElevation = 4.dp,
+              focusedElevation = 4.dp,
+              hoveredElevation = 4.dp,
           ),
       modifier = modifier.size(76.dp),
   ) {
@@ -55,7 +55,7 @@ fun CircleButton(
   }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0xFFEBF5E9)
 @Composable
 fun PreviewGeoVoyageCircleButton() {
   CircleButton(

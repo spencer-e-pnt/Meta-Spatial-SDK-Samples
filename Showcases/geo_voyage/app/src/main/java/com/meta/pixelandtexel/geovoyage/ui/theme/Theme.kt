@@ -10,8 +10,9 @@ fun GeoVoyageTheme(
     content: @Composable () -> Unit
 ) {
     SpatialTheme(
-        colorScheme = geoVoyageColorScheme,
-        typography = geoVoyageTypography,
+        colorScheme = GeoVoyageColorScheme,
+        typography = GeoVoyageTypography,
+        shapes = GeoVoyageShapes,
         content = content
     )
 }
