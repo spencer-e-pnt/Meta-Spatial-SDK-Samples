@@ -2,25 +2,21 @@
 
 package com.meta.pixelandtexel.geovoyage.ui.theme
 
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.googlefonts.Font
-import androidx.compose.ui.text.googlefonts.GoogleFont
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 import com.meta.pixelandtexel.geovoyage.R
 import com.meta.spatial.uiset.theme.SpatialTypography
 
-val provider =
-    GoogleFont.Provider(
-        providerAuthority = "com.google.android.gms.fonts",
-        providerPackage = "com.google.android.gms",
-        certificates = R.array.com_google_android_gms_fonts_certs
-    )
-
 val montserratFontFamily =
     FontFamily(
-        Font(
-            googleFont = GoogleFont("Montserrat"),
-            fontProvider = provider,
-        )
+        Font(R.font.montserrat_light, FontWeight.Light),
+        Font(R.font.montserrat_regular, FontWeight.Normal),
+        Font(R.font.montserrat_medium, FontWeight.Medium),
+        Font(R.font.montserrat_semibold, FontWeight.SemiBold),
+        Font(R.font.montserrat_bold, FontWeight.Bold),
+        Font(R.font.montserrat_black, FontWeight.Black),
     )
 
 val baseline = SpatialTypography()
@@ -30,39 +26,41 @@ val geoVoyageTypography = SpatialTypography(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    headline1 = baseline.headline1Strong.copy(
+    headline1 = baseline.headline1.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    headline2Strong = baseline.headline1Strong.copy(
+    headline2Strong = baseline.headline2Strong.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    headline2 = baseline.headline1Strong.copy(
+    headline2 = baseline.headline2.copy(
+        fontFamily = montserratFontFamily,
+        fontSize = 25.sp,
+        fontWeight = FontWeight.Medium,
+        color = GeoVoyageColors.textColor
+    ),
+    headline3Strong = baseline.headline3Strong.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    headline3Strong = baseline.headline1Strong.copy(
+    headline3 = baseline.headline3.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    headline3 = baseline.headline1Strong.copy(
+    body1Strong = baseline.body1Strong.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    body1Strong = baseline.headline1Strong.copy(
+    body1 = baseline.body1.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    body1 = baseline.headline1Strong.copy(
+    body2Strong = baseline.body2Strong.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
-    body2Strong = baseline.headline1Strong.copy(
-        fontFamily = montserratFontFamily,
-        color = GeoVoyageColors.textColor
-    ),
-    body2 = baseline.headline1Strong.copy(
+    body2 = baseline.body2.copy(
         fontFamily = montserratFontFamily,
         color = GeoVoyageColors.textColor
     ),
