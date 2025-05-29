@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.FloatingActionButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,7 +15,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -21,10 +22,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.meta.pixelandtexel.geovoyage.R
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.pixelandtexel.geovoyage.viewmodels.AskEarthViewModel
 import com.meta.spatial.uiset.theme.LocalColorScheme
+import com.meta.spatial.uiset.theme.icons.SpatialIcons
+import com.meta.spatial.uiset.theme.icons.regular.MicrophoneOn
 
 object Routes {
   const val PERMISSIONS_ROUTE = "permissions"
@@ -91,12 +93,19 @@ fun AskEarthScreen(
           onClick = { vm.navTo(Routes.LISTENING_ROUTE) },
           modifier = Modifier
             .size(40.dp, 40.dp)
-            .offset(),
+            .offset((-8).dp, (-8).dp),
           containerColor = LocalColorScheme.current.primaryButton,
-          contentColor = Color.White
+          contentColor = Color.White,
+          // remove shadow
+          elevation = FloatingActionButtonDefaults.elevation(
+            0.dp,
+            0.dp,
+            0.dp,
+            0.dp
+          )
         ) {
           Icon(
-            painter = painterResource(id = R.drawable.ic_mic),
+            imageVector = SpatialIcons.Regular.MicrophoneOn,
             contentDescription = "Ask another question",
             modifier = Modifier.size(24.dp)
           )

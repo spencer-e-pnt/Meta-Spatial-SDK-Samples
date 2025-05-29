@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageColors
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.pixelandtexel.geovoyage.utils.DisplayUtils.toPx
 import com.meta.spatial.uiset.theme.LocalColorScheme
@@ -104,7 +105,7 @@ fun ScrollableTextAreaWithScrollBar(text: String, modifier: Modifier = Modifier)
                         .clip(RoundedCornerShape(20.0.dp))
                         .width(8.dp)
                         .height(with(LocalDensity.current) { thumbHeight.toDp() })
-                        .background(LocalColorScheme.current.primaryButton.copy(alpha = 0.4f)))
+                        .background(GeoVoyageColors.textColor.copy(alpha = 0.5f)))
           }
     }
   }

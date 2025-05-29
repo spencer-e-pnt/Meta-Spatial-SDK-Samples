@@ -9,4 +9,7 @@
 
     <dimen name="centered_panel_width">270dp</dimen>
     <dimen name="centered_panel_height">260dp</dimen>
+    <dimen name="short_panel_height">260dp</dimen>
+    <dimen name="medium_panel_height">388dp</dimen>
+    <dimen name="tall_panel_height">480dp</dimen>
 </resources>
