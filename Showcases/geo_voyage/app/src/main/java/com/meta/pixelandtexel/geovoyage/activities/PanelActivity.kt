@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -154,7 +155,14 @@ class PanelActivity : ActivityCompat.OnRequestPermissionsResultCallback, Compone
       }
 
       GeoVoyageTheme {
-        Box(modifier = Modifier.size(1210.dp, 940.dp).padding(0.dp)) {
+        Box(
+          modifier = Modifier
+            .size(
+              dimensionResource(R.dimen.panel_width),
+              dimensionResource(R.dimen.panel_height)
+            )
+            .padding(0.dp)
+        ) {
           PrimaryPanel {
             if (userAcceptedNotice) {
               PanelNavContainer(title, route, navButtonStates, { panelVM.navTo(it) }) {

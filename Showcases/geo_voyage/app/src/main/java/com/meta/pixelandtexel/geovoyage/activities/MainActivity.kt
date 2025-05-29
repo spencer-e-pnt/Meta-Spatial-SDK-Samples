@@ -123,26 +123,24 @@ class MainActivity : ActivityCompat.OnRequestPermissionsResultCallback, AppSyste
   override fun registerPanels(): List<PanelRegistration> {
     // all of our panels share a common panel config, except for width/height values
     return listOf(
-        PanelRegistration(R.integer.panel_id) {
-          activityClass = PanelActivity::class.java
-          config { getPanelConfig(1.21f, 0.94f, 1210).copyTo(this) }
-        })
-  }
-
-  private fun getPanelConfig(width: Float, height: Float, dp: Int): PanelConfigOptions {
-    return PanelConfigOptions(
-        width = width,
-        height = height,
-        layoutWidthInDp = dp.toFloat(),
-        layoutHeightInDp = dp * (height / width),
-        includeGlass = false,
-        themeResourceId = R.style.PanelAppThemeTransparent,
-        enableTransparent = true,
-        forceSceneTexture = true,
-        // Enable better looking panels
-        layerConfig = LayerConfig(),
-        panelShader = SceneMaterial.HOLE_PUNCH_PANEL_SHADER,
-        alphaMode = AlphaMode.HOLE_PUNCH)
+      PanelRegistration(R.integer.panel_id) {
+        activityClass = PanelActivity::class.java
+        config {
+            width = 0.772f
+            height = 0.6f
+            layoutWidthInDp = 772f
+            layoutHeightInDp = 600f
+            includeGlass = false
+            themeResourceId = R.style.PanelAppThemeTransparent
+            enableTransparent = true
+            forceSceneTexture = true
+            // Enable better looking panels
+            layerConfig = LayerConfig()
+            panelShader = SceneMaterial.HOLE_PUNCH_PANEL_SHADER
+            alphaMode = AlphaMode.HOLE_PUNCH
+        }
+      }
+    )
   }
 
   override fun onSceneReady() {
