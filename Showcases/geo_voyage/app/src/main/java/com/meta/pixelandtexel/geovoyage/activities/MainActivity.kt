@@ -186,7 +186,7 @@ class MainActivity : ActivityCompat.OnRequestPermissionsResultCallback, AppSyste
               R.integer.panel_id,
               R.integer.panel_id,
               Transform(),
-              Tether(globeEntity, -63f, 15f, 1.2f),
+              Tether(globeEntity, -63f, 15f, 0.9f),
               Visible(false))
     }
   }
