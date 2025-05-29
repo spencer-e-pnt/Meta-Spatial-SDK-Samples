@@ -6,7 +6,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,42 +29,41 @@ import com.meta.spatial.uiset.theme.LocalTypography
  */
 @Composable
 fun TitleBar(
-    label: String,
-    modifier: Modifier = Modifier,
+  label: String,
+  modifier: Modifier = Modifier,
 ) {
   Box(
-      modifier =
-          modifier
-              .shadow(
-                  elevation = 4.dp,
-                  shape = LocalShapes.current.large,
-              )
-              .height(100.dp)
-              .background(GeoVoyageColors.navContainer, LocalShapes.current.large)
-              .padding(0.dp)
+    modifier =
+      modifier
+        .shadow(
+          elevation = 16.dp,
+          shape = LocalShapes.current.small,
+        )
+        .background(GeoVoyageColors.navContainer, LocalShapes.current.small)
+        .height(48.dp)
   ) {
-        Column(
-            horizontalAlignment = Alignment.Start,
-            verticalArrangement = Arrangement.Center,
-            modifier = modifier.fillMaxSize()) {
-              Text(
-                  text = label,
-                  style =
-                      LocalTypography.current.headline2.copy(
-                          fontWeight = FontWeight.Normal,
-                      ),
-                  modifier = Modifier.padding(30.dp, 0.dp).fillMaxWidth())
-            }
-      }
+    Column(
+      horizontalAlignment = Alignment.Start,
+      verticalArrangement = Arrangement.Center,
+      modifier = modifier.fillMaxWidth()
+    ) {
+      Text(
+        text = label,
+        style = LocalTypography.current.headline3.copy(
+          fontWeight = FontWeight.Normal,
+        ),
+        modifier = Modifier
+          .padding(24.dp, 12.dp)
+          .fillMaxWidth()
+      )
+    }
+  }
 }
 
 @Preview(showBackground = true, backgroundColor = 0xFFECEFE8)
 @Composable
 private fun PreviewGeoVoyageTextInput() {
   GeoVoyageTheme {
-    TitleBar(
-        "Speak",
-        modifier = Modifier.padding(16.dp),
-    )
+    TitleBar("Speak")
   }
 }

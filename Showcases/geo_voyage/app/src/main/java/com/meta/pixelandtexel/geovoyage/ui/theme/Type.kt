@@ -36,8 +36,6 @@ val GeoVoyageTypography = SpatialTypography(
     ),
     headline2 = baseline.headline2.copy(
         fontFamily = montserratFontFamily,
-        fontSize = 25.sp,
-        fontWeight = FontWeight.Medium,
         color = GeoVoyageColors.textColor
     ),
     headline3Strong = baseline.headline3Strong.copy(
@@ -55,6 +53,7 @@ val GeoVoyageTypography = SpatialTypography(
     ),
     body1 = baseline.body1.copy(
         fontFamily = montserratFontFamily,
+        fontWeight = FontWeight.Medium,
         color = GeoVoyageColors.textColor
     ),
     body2Strong = baseline.body2Strong.copy(

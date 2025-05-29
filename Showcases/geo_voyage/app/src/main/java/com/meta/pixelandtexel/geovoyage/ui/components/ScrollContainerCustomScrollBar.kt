@@ -65,7 +65,7 @@ fun ScrollableTextAreaWithScrollBar(text: String, modifier: Modifier = Modifier)
           MarkdownText(
               markdown = text,
               modifier = Modifier.fillMaxWidth(),
-              style = LocalTypography.current.headline2)
+              style = LocalTypography.current.body1)
         }
 
     // Custom Scroll Bar
