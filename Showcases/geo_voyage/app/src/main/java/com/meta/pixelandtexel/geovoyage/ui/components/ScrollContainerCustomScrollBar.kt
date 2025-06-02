@@ -36,7 +36,6 @@ import androidx.compose.ui.unit.dp
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageColors
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.pixelandtexel.geovoyage.utils.DisplayUtils.toPx
-import com.meta.spatial.uiset.theme.LocalColorScheme
 import com.meta.spatial.uiset.theme.LocalTypography
 import dev.jeziellago.compose.markdowntext.MarkdownText
 import kotlin.math.roundToInt

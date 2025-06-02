@@ -4,7 +4,6 @@ package com.meta.pixelandtexel.geovoyage.ui.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.spatial.uiset.button.PrimaryButton
@@ -14,35 +13,29 @@ import com.meta.spatial.uiset.theme.icons.regular.CheckAlt
 
 @Composable
 fun ToggleChip(
-  selected: Boolean = true,
-  enabled: Boolean = true,
-  text: String = "",
-  onClick: () -> Unit
+    selected: Boolean = true,
+    enabled: Boolean = true,
+    text: String = "",
+    onClick: () -> Unit
 ) {
-  if(enabled && !selected) {
-    SecondaryButton(
-      label = text,
-      leading = null,
-      isEnabled = true,
-      onClick = onClick
-    )
-  }
-  else {
+  if (enabled && !selected) {
+    SecondaryButton(label = text, leading = null, isEnabled = true, onClick = onClick)
+  } else {
     PrimaryButton(
-      label = text,
-      leading = if (selected) {
-        {
-          Icon(
-            imageVector = SpatialIcons.Regular.CheckAlt,
-            contentDescription = "Done icon",
-          )
-        }
-      } else {
-        null
-      },
-      isEnabled = enabled,
-      onClick = onClick
-    )
+        label = text,
+        leading =
+            if (selected) {
+              {
+                Icon(
+                    imageVector = SpatialIcons.Regular.CheckAlt,
+                    contentDescription = "Done icon",
+                )
+              }
+            } else {
+              null
+            },
+        isEnabled = enabled,
+        onClick = onClick)
   }
 }
 

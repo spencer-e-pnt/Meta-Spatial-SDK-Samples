@@ -27,8 +27,8 @@ import com.meta.spatial.uiset.button.PrimaryButton
 
 @Composable
 fun TodayInHistoryScreen(
-  vm: TodayInHistoryViewModel = viewModel(),
-  setTitle: ((text: String) -> Unit)? = null,
+    vm: TodayInHistoryViewModel = viewModel(),
+    setTitle: ((text: String) -> Unit)? = null,
 ) {
   val title by vm.title
   val result by vm.result
@@ -41,32 +41,26 @@ fun TodayInHistoryScreen(
   LaunchedEffect(title) { setTitle?.invoke(title) }
 
   Column(
-    verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.fillMaxSize()
-  ) {
-    SecondaryPanel(
-      modifier = Modifier
-        .fillMaxWidth()
-        .height(dimensionResource(R.dimen.tall_panel_height))
-    ) {
-      Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.SpaceAround,
-        modifier = Modifier.fillMaxSize(),
-      ) {
-        ScrollableTextAreaWithScrollBar(text = result, modifier = Modifier.weight(1f))
-        Spacer(Modifier.height(20.dp))
-        PrimaryButton(
-          label = stringResource(id = R.string.today_show_another),
-          isEnabled = !busy,
-          onClick = {
-            vm.startTodayInHistoryQuery()
-          }
-        )
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier.fillMaxSize()) {
+        SecondaryPanel(
+            modifier =
+                Modifier.fillMaxWidth().height(dimensionResource(R.dimen.tall_panel_height))) {
+              Column(
+                  horizontalAlignment = Alignment.CenterHorizontally,
+                  verticalArrangement = Arrangement.SpaceAround,
+                  modifier = Modifier.fillMaxSize(),
+              ) {
+                ScrollableTextAreaWithScrollBar(text = result, modifier = Modifier.weight(1f))
+                Spacer(Modifier.height(20.dp))
+                PrimaryButton(
+                    label = stringResource(id = R.string.today_show_another),
+                    isEnabled = !busy,
+                    onClick = { vm.startTodayInHistoryQuery() })
+              }
+            }
       }
-    }
-  }
 }
 
 @Preview(widthDp = 570, heightDp = 480, showBackground = true, backgroundColor = 0xFFECEFE8)

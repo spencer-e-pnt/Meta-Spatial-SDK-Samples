@@ -18,39 +18,28 @@ import com.meta.spatial.uiset.theme.LocalTypography
 
 @Composable
 fun SettingsRadioButtonGroupListItem(
-  headlineText: String,
-  selectedIdx: MutableIntState,
-  options: List<String>,
-  onOptionSelected: (idx: Int) -> Unit
+    headlineText: String,
+    selectedIdx: MutableIntState,
+    options: List<String>,
+    onOptionSelected: (idx: Int) -> Unit
 ) {
   Column(verticalArrangement = Arrangement.SpaceBetween) {
-    Row(
-      modifier = Modifier
-        .padding(start = 12.dp, end = 12.dp, bottom = 8.dp)
-        .fillMaxWidth()
-    ) {
-      Text(
-        text = headlineText,
-        style = LocalTypography.current.headline3
-      )
+    Row(modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 8.dp).fillMaxWidth()) {
+      Text(text = headlineText, style = LocalTypography.current.headline3)
     }
     options.forEachIndexed { index, label ->
       Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier
-          .padding(24.dp, 8.dp)
-          .fillMaxWidth()
-      ) {
-        Text(label, style = LocalTypography.current.body1)
-        SpatialRadioButton(
-          selected = index == selectedIdx.intValue,
-          onClick = {
-            selectedIdx.intValue = index
-            onOptionSelected(index)
+          verticalAlignment = Alignment.CenterVertically,
+          horizontalArrangement = Arrangement.SpaceBetween,
+          modifier = Modifier.padding(24.dp, 8.dp).fillMaxWidth()) {
+            Text(label, style = LocalTypography.current.body1)
+            SpatialRadioButton(
+                selected = index == selectedIdx.intValue,
+                onClick = {
+                  selectedIdx.intValue = index
+                  onOptionSelected(index)
+                })
           }
-        )
-      }
     }
   }
   HorizontalDivider(color = Color.White)

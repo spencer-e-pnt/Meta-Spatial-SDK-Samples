@@ -22,20 +22,17 @@ import com.meta.spatial.uiset.theme.LocalShapes
  */
 @Composable
 fun PrimaryPanel(
-  modifier: Modifier = Modifier,
-  content: @Composable () -> Unit,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit,
 ) {
   Box(
-    modifier = modifier
-      .clip(LocalShapes.current.large)
-      .background(
-        brush = LocalColorScheme.current.panel,
-        shape = LocalShapes.current.large
-      )
-      .padding(dimensionResource(R.dimen.standard_margin))
-  ) {
-    content.invoke()
-  }
+      modifier =
+          modifier
+              .clip(LocalShapes.current.large)
+              .background(brush = LocalColorScheme.current.panel, shape = LocalShapes.current.large)
+              .padding(dimensionResource(R.dimen.standard_margin))) {
+        content.invoke()
+      }
 }
 
 @Preview(widthDp = 600, heightDp = 400)

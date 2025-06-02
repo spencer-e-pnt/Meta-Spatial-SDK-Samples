@@ -27,45 +27,31 @@ import dev.jeziellago.compose.markdowntext.MarkdownText
 
 @Composable
 fun PermissionsScreen(
-  onEnableClicked: () -> Unit,
-  onNotNowClicked: () -> Unit,
+    onEnableClicked: () -> Unit,
+    onNotNowClicked: () -> Unit,
 ) {
   val noticeText = stringResource(id = R.string.permissions)
 
   Column(
-    verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.fillMaxSize()
-  ) {
-    SecondaryPanel(
-      modifier = Modifier
-        .fillMaxWidth()
-        .height(388.dp)
-    ) {
-      Column(
-        modifier = Modifier.fillMaxSize(),
-      ) {
-        MarkdownText(
-          markdown = noticeText,
-          modifier = Modifier
-            .selectable(false, false) {}
-            .weight(1f),
-          style = SpatialTheme.typography.body1
-        )
-        Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
-          SecondaryButton(
-            label = "Not now",
-            onClick = onNotNowClicked
-          )
-          Spacer(Modifier.width(12.dp))
-          PrimaryButton(
-            label = "Enable",
-            onClick = onEnableClicked
-          )
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier.fillMaxSize()) {
+        SecondaryPanel(modifier = Modifier.fillMaxWidth().height(388.dp)) {
+          Column(
+              modifier = Modifier.fillMaxSize(),
+          ) {
+            MarkdownText(
+                markdown = noticeText,
+                modifier = Modifier.selectable(false, false) {}.weight(1f),
+                style = SpatialTheme.typography.body1)
+            Row(horizontalArrangement = Arrangement.End, modifier = Modifier.fillMaxWidth()) {
+              SecondaryButton(label = "Not now", onClick = onNotNowClicked)
+              Spacer(Modifier.width(12.dp))
+              PrimaryButton(label = "Enable", onClick = onEnableClicked)
+            }
+          }
         }
       }
-    }
-  }
 }
 
 @Preview(widthDp = 570, heightDp = 480, showBackground = true, backgroundColor = 0xFFECEFE8)

@@ -30,27 +30,22 @@ import com.meta.spatial.uiset.theme.SpatialTheme
 fun ErrorScreen(errorMessage: String) {
   SecondaryPanel {
     Column(
-      horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.Center,
-      modifier = Modifier.fillMaxSize()
-    ) {
-      Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-          .fillMaxWidth(0.8f)
-          .fillMaxHeight()
-      ) {
-        Text(
-          text = stringResource(id = R.string.default_error_title),
-          style = SpatialTheme.typography.headline3Strong
-        )
-        if (errorMessage.isNotEmpty()) {
-          Spacer(modifier = Modifier.height(20.dp))
-          Text(text = errorMessage, style = SpatialTheme.typography.body1)
+        modifier = Modifier.fillMaxSize()) {
+          Column(
+              horizontalAlignment = Alignment.CenterHorizontally,
+              verticalArrangement = Arrangement.Center,
+              modifier = Modifier.fillMaxWidth(0.8f).fillMaxHeight()) {
+                Text(
+                    text = stringResource(id = R.string.default_error_title),
+                    style = SpatialTheme.typography.headline3Strong)
+                if (errorMessage.isNotEmpty()) {
+                  Spacer(modifier = Modifier.height(20.dp))
+                  Text(text = errorMessage, style = SpatialTheme.typography.body1)
+                }
+              }
         }
-      }
-    }
   }
 }
 

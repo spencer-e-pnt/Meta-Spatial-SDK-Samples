@@ -22,24 +22,21 @@ fun IntroScreen() {
   val introText = stringResource(R.string.intro)
 
   Column(
-    verticalArrangement = Arrangement.Top,
-    horizontalAlignment = Alignment.CenterHorizontally,
-    modifier = Modifier.fillMaxSize()
-  ) {
-    SecondaryPanel {
-      Column(
-        verticalArrangement = Arrangement.SpaceAround,
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.fillMaxSize()
-      ) {
-        MarkdownText(
-          markdown = introText,
-          modifier = Modifier.selectable(false, false) {},
-          style = LocalTypography.current.body1Strong
-        )
+      verticalArrangement = Arrangement.Top,
+      horizontalAlignment = Alignment.CenterHorizontally,
+      modifier = Modifier.fillMaxSize()) {
+        SecondaryPanel {
+          Column(
+              verticalArrangement = Arrangement.SpaceAround,
+              horizontalAlignment = Alignment.CenterHorizontally,
+              modifier = Modifier.fillMaxSize()) {
+                MarkdownText(
+                    markdown = introText,
+                    modifier = Modifier.selectable(false, false) {},
+                    style = LocalTypography.current.body1Strong)
+              }
+        }
       }
-    }
-  }
 }
 
 @Preview(widthDp = 570, heightDp = 480)

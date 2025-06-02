@@ -55,65 +55,69 @@ fun QuestionScreen(
 
   // question text and icon styling
 
-  val questionColor = if (answeredCorrectly.value != null && !(answeredCorrectly.value!!))
-    colorResource(R.color.quiz_incorrect_red)
-  else Color.Black
-  val iconColor = if (answeredCorrectly.value != null && answeredCorrectly.value!!)
-    colorResource(R.color.quiz_correct_green)
-  else colorResource(R.color.quiz_incorrect_red)
-  val iconImageVector = if (answeredCorrectly.value != null && answeredCorrectly.value!!)
-    SpatialIcons.Regular.CheckAlt
-  else SpatialIcons.Regular.Close
+  val questionColor =
+      if (answeredCorrectly.value != null && !(answeredCorrectly.value!!))
+          colorResource(R.color.quiz_incorrect_red)
+      else Color.Black
+  val iconColor =
+      if (answeredCorrectly.value != null && answeredCorrectly.value!!)
+          colorResource(R.color.quiz_correct_green)
+      else colorResource(R.color.quiz_incorrect_red)
+  val iconImageVector =
+      if (answeredCorrectly.value != null && answeredCorrectly.value!!)
+          SpatialIcons.Regular.CheckAlt
+      else SpatialIcons.Regular.Close
 
   Column(
       verticalArrangement = Arrangement.Top,
       horizontalAlignment = Alignment.CenterHorizontally,
       modifier = Modifier.fillMaxSize()) {
-        SecondaryPanel(modifier = Modifier.fillMaxWidth().height(dimensionResource(R.dimen.medium_panel_height))) {
-          Column(
-              verticalArrangement = Arrangement.SpaceEvenly,
-              horizontalAlignment = Alignment.CenterHorizontally,
-              modifier = Modifier.fillMaxSize()) {
-                Row(
-                    horizontalArrangement = Arrangement.Center,
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 40.dp)) {
-                      if (answeredCorrectly.value != null) {
-                        Icon(
-                            imageVector = iconImageVector,
-                            contentDescription = "Answer icon",
-                            tint = iconColor,
-                            modifier = Modifier.size(40.dp))
-                      }
-                      Text(
-                          text = titleText.value,
-                          color = questionColor,
-                          style = LocalTypography.current.headline3Strong)
+        SecondaryPanel(
+            modifier =
+                Modifier.fillMaxWidth().height(dimensionResource(R.dimen.medium_panel_height))) {
+              Column(
+                  verticalArrangement = Arrangement.SpaceEvenly,
+                  horizontalAlignment = Alignment.CenterHorizontally,
+                  modifier = Modifier.fillMaxSize()) {
+                    Row(
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 40.dp)) {
+                          if (answeredCorrectly.value != null) {
+                            Icon(
+                                imageVector = iconImageVector,
+                                contentDescription = "Answer icon",
+                                tint = iconColor,
+                                modifier = Modifier.size(40.dp))
+                          }
+                          Text(
+                              text = titleText.value,
+                              color = questionColor,
+                              style = LocalTypography.current.headline3Strong)
+                        }
+
+                    for (i in 0..2) {
+                      QuizButton(
+                          label = answers[i],
+                          isEnabled = answeredCorrectly.value == null,
+                          hasSelectedAnswer = answeredCorrectly.value != null,
+                          didAnswerCorrectly = answeredCorrectly.value == true,
+                          isCorrectAnswer = i == correctAnswerIdx,
+                          onClick = {
+                            onUserAnswered(i)
+
+                            val isCorrect = i == correctAnswerIdx
+                            if (isCorrect) {
+                              titleText.value = correctAnswerText
+                            } else {
+                              titleText.value = incorrectAnswerText
+                            }
+
+                            answeredCorrectly.value = isCorrect
+                          })
                     }
-
-                for (i in 0..2) {
-                  QuizButton(
-                    label = answers[i],
-                    isEnabled = answeredCorrectly.value == null,
-                    hasSelectedAnswer = answeredCorrectly.value != null,
-                    didAnswerCorrectly = answeredCorrectly.value == true,
-                    isCorrectAnswer = i == correctAnswerIdx,
-                    onClick = {
-                      onUserAnswered(i)
-
-                      val isCorrect = i == correctAnswerIdx
-                      if (isCorrect) {
-                        titleText.value = correctAnswerText
-                      } else {
-                        titleText.value = incorrectAnswerText
-                      }
-
-                      answeredCorrectly.value = isCorrect
-                    }
-                  )
-                }
-              }
-        }
+                  }
+            }
       }
 }
 

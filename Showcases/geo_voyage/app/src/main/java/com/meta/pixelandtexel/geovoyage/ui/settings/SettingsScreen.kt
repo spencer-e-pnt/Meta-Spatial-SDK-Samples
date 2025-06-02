@@ -48,63 +48,55 @@ fun SettingsScreen() {
   LaunchedEffect(null) {
     isWitAiFilteringEnabled.value = SettingsService.get(SettingsKey.WIT_AI_FILTERING_ENABLED, true)
     isSilenceDetectionEnabled.value =
-      SettingsService.get(SettingsKey.SILENCE_DETECTION_ENABLED, true)
+        SettingsService.get(SettingsKey.SILENCE_DETECTION_ENABLED, true)
     llamaServerSelectedIndex.intValue =
-      SettingsService.get(SettingsKey.LLAMA_SERVER_TYPE, LlamaServerType.AWS_BEDROCK.value)
+        SettingsService.get(SettingsKey.LLAMA_SERVER_TYPE, LlamaServerType.AWS_BEDROCK.value)
   }
 
   Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxSize()) {
     SecondaryPanel(
-      modifier = Modifier
-        .fillMaxWidth()
-        .height(dimensionResource(R.dimen.tall_panel_height))
-    ) {
-      Column {
-        Column(
-          modifier =
-            Modifier
-              .padding(12.dp)
-              .fillMaxSize()
-              .weight(1f)
-              .verticalScroll(rememberScrollState()),
-          verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-          SettingsSwitchListItem("Enable Wit.ai filtering", isWitAiFilteringEnabled) {
-            SettingsService.set(SettingsKey.WIT_AI_FILTERING_ENABLED, it)
-          }
-          SettingsSwitchListItem("Detect speech ended", isSilenceDetectionEnabled) {
-            SettingsService.set(SettingsKey.SILENCE_DETECTION_ENABLED, it)
-          }
-          SettingsRadioButtonGroupListItem(
-            "Llama server", llamaServerSelectedIndex, llamaServerOptions
-          ) {
-            val newType =
-              LlamaServerType.fromValue(it)
-                ?: throw Exception("Invalid LlamaServerType from value $it")
-            SettingsService.set(SettingsKey.LLAMA_SERVER_TYPE, newType.value)
-          }
-          if (llamaServerSelectedIndex.intValue == LlamaServerType.OLLAMA.value) {
-            SettingsTextFieldListItem(
-              "Ollama server URL",
-              stringResource(R.string.placeholder_ollama_url),
-              textFieldValue
+        modifier = Modifier.fillMaxWidth().height(dimensionResource(R.dimen.tall_panel_height))) {
+          Column {
+            Column(
+                modifier =
+                    Modifier.padding(12.dp)
+                        .fillMaxSize()
+                        .weight(1f)
+                        .verticalScroll(rememberScrollState()),
+                verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                  SettingsSwitchListItem("Enable Wit.ai filtering", isWitAiFilteringEnabled) {
+                    SettingsService.set(SettingsKey.WIT_AI_FILTERING_ENABLED, it)
+                  }
+                  SettingsSwitchListItem("Detect speech ended", isSilenceDetectionEnabled) {
+                    SettingsService.set(SettingsKey.SILENCE_DETECTION_ENABLED, it)
+                  }
+                  SettingsRadioButtonGroupListItem(
+                      "Llama server", llamaServerSelectedIndex, llamaServerOptions) {
+                        val newType =
+                            LlamaServerType.fromValue(it)
+                                ?: throw Exception("Invalid LlamaServerType from value $it")
+                        SettingsService.set(SettingsKey.LLAMA_SERVER_TYPE, newType.value)
+                      }
+                  if (llamaServerSelectedIndex.intValue == LlamaServerType.OLLAMA.value) {
+                    SettingsTextFieldListItem(
+                        "Ollama server URL",
+                        stringResource(R.string.placeholder_ollama_url),
+                        textFieldValue) {
+                          SettingsService.set(SettingsKey.OLLAMA_URL, it)
+                        }
+                  }
+                }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxWidth(),
             ) {
-              SettingsService.set(SettingsKey.OLLAMA_URL, it)
+              Text(
+                  "Version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
+                  color = Color.Black,
+                  style = MaterialTheme.typography.bodyMedium)
             }
           }
         }
-        Column(
-          horizontalAlignment = Alignment.CenterHorizontally,
-          modifier = Modifier.fillMaxWidth(),
-        ) {
-          Text(
-            "Version: ${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
-            color = Color.Black,
-            style = MaterialTheme.typography.bodyMedium
-          )
-        }
-      }
-    }
   }
 }
 

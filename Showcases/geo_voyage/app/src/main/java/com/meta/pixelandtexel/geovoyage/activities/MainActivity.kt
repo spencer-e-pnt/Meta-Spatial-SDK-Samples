@@ -30,12 +30,10 @@ import com.meta.pixelandtexel.geovoyage.services.SettingsService
 import com.meta.pixelandtexel.geovoyage.services.googlemaps.GoogleTilesService
 import com.meta.pixelandtexel.geovoyage.services.googlemaps.IPanoramaServiceHandler
 import com.meta.pixelandtexel.geovoyage.services.llama.QueryLlamaService
-import com.meta.pixelandtexel.geovoyage.utils.copyTo
 import com.meta.spatial.core.Entity
 import com.meta.spatial.core.SpatialFeature
 import com.meta.spatial.runtime.AlphaMode
 import com.meta.spatial.runtime.LayerConfig
-import com.meta.spatial.runtime.PanelConfigOptions
 import com.meta.spatial.runtime.SceneAudioAsset
 import com.meta.spatial.runtime.SceneMaterial
 import com.meta.spatial.runtime.SceneObject
@@ -123,9 +121,9 @@ class MainActivity : ActivityCompat.OnRequestPermissionsResultCallback, AppSyste
   override fun registerPanels(): List<PanelRegistration> {
     // all of our panels share a common panel config, except for width/height values
     return listOf(
-      PanelRegistration(R.integer.panel_id) {
-        activityClass = PanelActivity::class.java
-        config {
+        PanelRegistration(R.integer.panel_id) {
+          activityClass = PanelActivity::class.java
+          config {
             width = 0.772f
             height = 0.6f
             layoutWidthInDp = 772f
@@ -138,9 +136,8 @@ class MainActivity : ActivityCompat.OnRequestPermissionsResultCallback, AppSyste
             layerConfig = LayerConfig()
             panelShader = SceneMaterial.HOLE_PUNCH_PANEL_SHADER
             alphaMode = AlphaMode.HOLE_PUNCH
-        }
-      }
-    )
+          }
+        })
   }
 
   override fun onSceneReady() {
