@@ -8,10 +8,9 @@ junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 composeActivity = "1.10.1"
 navigationCompose = "2.8.6"
-lifecycleRuntimeKtx = "2.8.6"
 navigationRuntimeKtx = "2.8.6"
 activityKtx = "1.10.1"
-composeBom = "2025.05.00"
+composeBom = "2025.05.01"
 appcompat = "1.7.0"
 constraintlayout = "2.2.1"
 composeMarkdown = "0.5.7"
@@ -41,7 +40,6 @@ androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-co
 
 # Compose Libraries
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
@@ -65,7 +63,6 @@ google-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gs
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
-android-library = { id = "com.android.library", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin"}
 meta-spatial-plugin = { id = "com.meta.spatial.plugin", version.ref = "spatialsdk" }
