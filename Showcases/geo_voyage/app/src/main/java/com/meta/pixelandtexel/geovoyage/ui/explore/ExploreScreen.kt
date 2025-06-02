@@ -59,7 +59,7 @@ fun ExploreScreen(
       modifier = Modifier.fillMaxSize()) {
         SecondaryPanel(
             modifier =
-                Modifier.fillMaxWidth().height(dimensionResource(R.dimen.medium_panel_height))) {
+                Modifier.fillMaxWidth().height(dimensionResource(R.dimen.tall_panel_height))) {
               Column(
                   horizontalAlignment = Alignment.CenterHorizontally,
                   verticalArrangement = Arrangement.SpaceAround,

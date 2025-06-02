@@ -74,6 +74,7 @@ dependencies {
   implementation(libs.meta.spatial.sdk.base)
   implementation(libs.meta.spatial.sdk.toolkit)
   implementation(libs.meta.spatial.sdk.vr)
+  implementation(libs.meta.spatial.sdk.isdk)
 
   implementation(files("libs/meta-spatial-uiset-1.0.1.aar"))
 

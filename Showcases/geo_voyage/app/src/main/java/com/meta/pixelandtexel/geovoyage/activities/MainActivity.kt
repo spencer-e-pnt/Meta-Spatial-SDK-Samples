@@ -32,6 +32,7 @@ import com.meta.pixelandtexel.geovoyage.services.googlemaps.IPanoramaServiceHand
 import com.meta.pixelandtexel.geovoyage.services.llama.QueryLlamaService
 import com.meta.spatial.core.Entity
 import com.meta.spatial.core.SpatialFeature
+import com.meta.spatial.isdk.IsdkFeature
 import com.meta.spatial.runtime.AlphaMode
 import com.meta.spatial.runtime.LayerConfig
 import com.meta.spatial.runtime.SceneAudioAsset
@@ -79,7 +80,7 @@ class MainActivity : ActivityCompat.OnRequestPermissionsResultCallback, AppSyste
   private lateinit var permissionsResultCallback: (granted: Boolean) -> Unit
 
   override fun registerFeatures(): List<SpatialFeature> {
-    return listOf(VRFeature(this))
+    return listOf(VRFeature(this), IsdkFeature(this, spatial, systemManager))
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
