@@ -30,12 +30,12 @@ import com.meta.pixelandtexel.geovoyage.models.TriviaQuestion
 import com.meta.pixelandtexel.geovoyage.services.SettingsService
 import com.meta.pixelandtexel.geovoyage.services.llama.QueryLlamaService
 import com.meta.pixelandtexel.geovoyage.ui.askearth.AskEarthScreen
-import com.meta.pixelandtexel.geovoyage.ui.components.buttons.NavButtonState
 import com.meta.pixelandtexel.geovoyage.ui.components.panel.PrimaryPanel
 import com.meta.pixelandtexel.geovoyage.ui.dailyquiz.DailyQuizScreen
 import com.meta.pixelandtexel.geovoyage.ui.explore.ExploreScreen
 import com.meta.pixelandtexel.geovoyage.ui.interstitial.InterstitialScreen
 import com.meta.pixelandtexel.geovoyage.ui.intro.IntroScreen
+import com.meta.pixelandtexel.geovoyage.ui.mainnavigator.NavButtonState
 import com.meta.pixelandtexel.geovoyage.ui.mainnavigator.PanelNavContainer
 import com.meta.pixelandtexel.geovoyage.ui.mainnavigator.Routes
 import com.meta.pixelandtexel.geovoyage.ui.settings.SettingsScreen

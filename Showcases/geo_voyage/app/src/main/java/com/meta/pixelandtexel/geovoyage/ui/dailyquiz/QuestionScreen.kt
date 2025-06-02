@@ -25,7 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.meta.pixelandtexel.geovoyage.R
-import com.meta.pixelandtexel.geovoyage.ui.components.buttons.QuizButton
+import com.meta.pixelandtexel.geovoyage.ui.components.QuizButton
 import com.meta.pixelandtexel.geovoyage.ui.components.panel.SecondaryPanel
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.spatial.uiset.theme.LocalTypography

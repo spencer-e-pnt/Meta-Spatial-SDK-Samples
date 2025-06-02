@@ -15,13 +15,12 @@ import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.dimensionResource
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.meta.pixelandtexel.geovoyage.R
 import com.meta.pixelandtexel.geovoyage.ui.components.TitleBar
-import com.meta.pixelandtexel.geovoyage.ui.components.buttons.NavButtonState
 import com.meta.pixelandtexel.geovoyage.ui.components.panel.PrimaryPanel
 import com.meta.pixelandtexel.geovoyage.ui.components.panel.SecondaryPanel
 import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageColors
@@ -34,6 +33,12 @@ import com.meta.spatial.uiset.theme.icons.regular.Settings
 import com.meta.spatial.uiset.theme.icons.regular.StarFull
 import com.meta.spatial.uiset.theme.icons.regular.Trophy
 import com.meta.spatial.uiset.theme.icons.regular.World
+
+class NavButtonState(
+  val text: String,
+  val route: String,
+  val iconImage : ImageVector
+)
 
 @Composable
 fun PanelNavContainer(

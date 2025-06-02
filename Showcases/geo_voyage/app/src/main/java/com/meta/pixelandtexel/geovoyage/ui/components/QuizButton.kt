@@ -1,4 +1,4 @@
-package com.meta.pixelandtexel.geovoyage.ui.components.buttons
+package com.meta.pixelandtexel.geovoyage.ui.components
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
