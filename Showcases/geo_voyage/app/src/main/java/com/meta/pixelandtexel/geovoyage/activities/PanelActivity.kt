@@ -47,6 +47,11 @@ import com.meta.pixelandtexel.geovoyage.viewmodels.IPlayModeViewModel
 import com.meta.pixelandtexel.geovoyage.viewmodels.PanelViewModel
 import com.meta.pixelandtexel.geovoyage.viewmodels.QuizViewModel
 import com.meta.pixelandtexel.geovoyage.viewmodels.TodayInHistoryViewModel
+import com.meta.spatial.uiset.theme.icons.SpatialIcons
+import com.meta.spatial.uiset.theme.icons.regular.MicrophoneOn
+import com.meta.spatial.uiset.theme.icons.regular.StarFull
+import com.meta.spatial.uiset.theme.icons.regular.Trophy
+import com.meta.spatial.uiset.theme.icons.regular.World
 import java.lang.ref.WeakReference
 import kotlin.random.Random
 import org.xmlpull.v1.XmlPullParser
@@ -82,31 +87,31 @@ class PanelActivity : ActivityCompat.OnRequestPermissionsResultCallback, Compone
     // NOTE: uncomment to test interstitial user notice
     // SettingsService.set(SettingsKey.ACCEPTED_NOTICE, false)
 
-    val navButtonStates =
-        listOf(
-            NavButtonState(
-                text = getString(R.string.explore),
-                route = Routes.EXPLORE_ROUTE,
-                iconResId = R.drawable.ic_explore,
-            ),
-            NavButtonState(
-                text = getString(R.string.ask),
-                route = Routes.ASK_EARTH_ROUTE,
-                iconResId = R.drawable.ic_mic,
-            ),
-            NavButtonState(
-                text = getString(R.string.today),
-                route = Routes.TODAY_IN_HISTORY_ROUTE,
-                iconResId = R.drawable.ic_calendar,
-            ),
-            NavButtonState(
-                text = getString(R.string.quiz),
-                route = Routes.DAILY_QUIZ_ROUTE,
-                iconResId = R.drawable.ic_question_block,
-            ))
-
     setContent {
       navController = rememberNavController()
+
+      val navButtonStates =
+        listOf(
+          NavButtonState(
+            text = getString(R.string.explore),
+            route = Routes.EXPLORE_ROUTE,
+            iconImage = SpatialIcons.Regular.World,
+          ),
+          NavButtonState(
+            text = getString(R.string.ask),
+            route = Routes.ASK_EARTH_ROUTE,
+            iconImage = SpatialIcons.Regular.MicrophoneOn,
+          ),
+          NavButtonState(
+            text = getString(R.string.today),
+            route = Routes.TODAY_IN_HISTORY_ROUTE,
+            iconImage = SpatialIcons.Regular.StarFull,
+          ),
+          NavButtonState(
+            text = getString(R.string.quiz),
+            route = Routes.DAILY_QUIZ_ROUTE,
+            iconImage = SpatialIcons.Regular.Trophy,
+          ))
 
       // instantiate our view models
       panelVM = viewModel()

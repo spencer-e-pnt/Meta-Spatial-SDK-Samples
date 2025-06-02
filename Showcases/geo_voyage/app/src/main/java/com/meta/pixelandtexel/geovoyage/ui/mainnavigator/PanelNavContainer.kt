@@ -29,7 +29,11 @@ import com.meta.pixelandtexel.geovoyage.ui.theme.GeoVoyageTheme
 import com.meta.spatial.uiset.button.SecondaryCircleButton
 import com.meta.spatial.uiset.navigation.SpatialSideNavItem
 import com.meta.spatial.uiset.theme.icons.SpatialIcons
+import com.meta.spatial.uiset.theme.icons.regular.MicrophoneOn
 import com.meta.spatial.uiset.theme.icons.regular.Settings
+import com.meta.spatial.uiset.theme.icons.regular.StarFull
+import com.meta.spatial.uiset.theme.icons.regular.Trophy
+import com.meta.spatial.uiset.theme.icons.regular.World
 
 @Composable
 fun PanelNavContainer(
@@ -79,9 +83,8 @@ fun PanelNavContainer(
           SpatialSideNavItem(
             icon = {
               Icon(
-                painter = painterResource(id = state.iconResId),
+                imageVector = state.iconImage,
                 contentDescription = state.text,
-                modifier = Modifier.fillMaxWidth(),
                 tint = GeoVoyageColors.navIcons
               )
             },
@@ -113,22 +116,22 @@ private fun PanelNavContainerPreview() {
       NavButtonState(
         text = "Explore",
         route = Routes.EXPLORE_ROUTE,
-        iconResId = R.drawable.ic_explore,
+        iconImage = SpatialIcons.Regular.World,
       ),
       NavButtonState(
         text = "Ask",
         route = Routes.ASK_EARTH_ROUTE,
-        iconResId = R.drawable.ic_mic,
+        iconImage = SpatialIcons.Regular.MicrophoneOn,
       ),
       NavButtonState(
         text = "Today",
         route = Routes.TODAY_IN_HISTORY_ROUTE,
-        iconResId = R.drawable.ic_calendar,
+        iconImage = SpatialIcons.Regular.StarFull,
       ),
       NavButtonState(
         text = "Quiz",
         route = Routes.DAILY_QUIZ_ROUTE,
-        iconResId = R.drawable.ic_question_block,
+        iconImage = SpatialIcons.Regular.Trophy,
       )
     )
 
