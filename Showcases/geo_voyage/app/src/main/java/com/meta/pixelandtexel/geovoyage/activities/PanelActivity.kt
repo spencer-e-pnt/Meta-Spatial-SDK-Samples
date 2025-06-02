@@ -194,7 +194,6 @@ class PanelActivity : ActivityCompat.OnRequestPermissionsResultCallback, Compone
                       composable(route = Routes.DAILY_QUIZ_ROUTE) {
                         DailyQuizScreen(
                             vm = quizVM,
-                            allQuestions = questions,
                             setTitle = { panelVM.setTitle(it) })
                       }
                       composable(route = Routes.SETTINGS_ROUTE) { SettingsScreen() }
